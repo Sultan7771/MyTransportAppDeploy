@@ -1,0 +1,1531 @@
+<MainScreen>:
+    canvas.before:
+        Color:
+            rgba: 1, 1, 1, 0.4       
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: 'GUI_design/background.png'
+    FloatLayout:
+        Label:
+            text:"Created by SultopiaDesign.Com"
+            font_size:'7sp'
+            pos_hint:{'center_x':0.5,'center_y':0.97}
+    GridLayout:
+        cols: 2
+        spacing: 20
+        padding: 60
+        RoundedButton:
+            text: "Mechanics"
+            on_press: root.mechanics()
+        RoundedButton:
+            text: "Force"
+            on_press: root.force()
+        RoundedButton:
+            text: "Weight"
+            on_press: root.weight()
+        RoundedButton:
+            text: "Work Done"
+            on_press: root.work()
+        RoundedButton:
+            text: "Power"
+            on_press: root.power()
+        RoundedButton:
+            text: "Efficiency"
+            on_press: root.efficiency()
+        RoundedButton:
+            text: "Energy"
+            on_press: root.energy()
+        RoundedButton:
+            text: "Fluid Mechanics"
+            on_press: root.fluid()
+        RoundedButton:
+            text: "Electricity"
+            on_press: root.electricity()
+
+
+<MechanicalScreen>:
+    canvas.before:
+        Color:
+            rgba: 1, 1, 1, 0.4       
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: 'GUI_design/background.png'
+    GridLayout:
+        cols: 1
+        padding: 10
+        spacing: 10
+        GridLayout:
+            cols:1
+            Label:
+                text:"Mechanical Equations"
+                font_size:'20sp'   
+        GridLayout:
+            rows: 5
+            padding: 10
+            spacing: 10
+            RoundedButton:
+                text: "Velocity"
+                on_press: root.speed()
+            RoundedButton:
+                text: "Acceleration"
+                on_press: root.acceleration()
+            RoundedButton:
+                text: "SUVAT #1"
+                on_press: root.suvat_velocity()
+            RoundedButton:
+                text: "SUVAT #2"
+                on_press: root.suvat_velocity_2()
+            RoundedButton:
+                text: "SUVAT #3"
+                on_press: root.suvat_displacement()
+            RoundedButton:
+                text: "SUVAT #4"
+                on_press: root.suvat_displacement_2()
+        RoundedButton:
+            text: "Back"
+            on_press: root.backwards()
+            size_hint: 0.1, 0.2
+            background_color: 1, 1, 1, 0
+            opacity: 1 if self.state == 'normal' else 0.5
+            color: 1, 1, 1, 1
+
+<SpeedScreen>:
+    canvas.before:
+        Color:
+            rgba: 1, 1, 1, 0.4       
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: 'GUI_design/background.png'
+    GridLayout:
+        cols: 1
+        rows: 7
+        padding: 10
+        spacing: 10
+        GridLayout:
+            cols:1
+            padding: 10
+            spacing: 10
+            Label:
+                text:"Velocity Equation"
+                font_size:'20sp' 
+            Image:
+                source: 'GUI_design/equation images/velocity.png'
+                size_hint: 1, 1
+                pos_hint: {'center_x': 0.93, 'center_y': 0.8}
+            TextInput:
+                id: distance
+                hint_text:"Enter value for Distance (meters)"
+                input_filter: "float"
+            TextInput:
+                id: time
+                hint_text:"Enter value for Time (seconds)"
+                input_filter: "float"
+            RoundedButton:
+                text: "Answer"
+                on_press: root.get_speed_answer(root.ids.distance.text,root.ids.time.text)
+            Label:
+                id: speed_answer
+                text: ""
+            Label:
+                text: "m/s"  
+        RoundedButton:
+            text: "Back"
+            on_press: root.backwards1()
+            size_hint: 0.2, 0.2
+            pos_hint: {'center_x': 0.93, 'center_y': 0.8}
+            background_color: 1, 1, 1, 0
+            opacity: 1 if self.state == 'normal' else 0.5
+            color: 1, 1, 1, 1
+
+<AccelerationScreen>:
+    canvas.before:
+        Color:
+            rgba: 1, 1, 1, 0.4       
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: 'GUI_design/background.png'
+    GridLayout:
+        cols: 1
+        padding: 10
+        spacing: 10
+        GridLayout:
+            cols:1
+            padding: 10
+            spacing: 10
+            Label:
+                text:"Acceleration Equation"
+                font_size:'20sp'
+            Image:
+                source: 'GUI_design/equation images/acceleration.png'
+                size_hint: 1, 1
+                pos_hint: {'center_x': 0.93, 'center_y': 0.8}  
+            TextInput:
+                id: velocity
+                hint_text:"Enter value for Velocity (m/s)"
+                input_filter: "float"
+            TextInput:
+                id: time
+                hint_text:"Enter value for Time (seconds)"
+                input_filter: "float"
+            RoundedButton:
+                text: "Answer"
+                on_press: root.get_acceleration_answer(root.ids.velocity.text,root.ids.time.text)
+            Label:
+                id: acceleration_answer
+                text: ""
+            Label:
+                text: "(m/s)^2"  
+        RoundedButton:
+            text: "Back"
+            on_press: root.backwards1()
+            size_hint: 0.2, 0.2
+            pos_hint: {'center_x': 0.93, 'center_y': 0.8}
+            background_color: 1, 1, 1, 0
+            opacity: 1 if self.state == 'normal' else 0.5
+            color: 1, 1, 1, 1
+
+<SuvatVelocityScreen>:
+    canvas.before:
+        Color:
+            rgba: 1, 1, 1, 0.4       
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: 'GUI_design/background.png'
+    GridLayout:
+        cols: 1
+        padding: 10
+        spacing: 10
+        GridLayout:
+            cols:1
+            padding: 10
+            spacing: 10
+            Label:
+                text:"Velocity Equation"
+                font_size:'20sp'
+            Image:
+                source: 'GUI_design/equation images/suvat1.png'
+                size_hint: 1, 1
+                pos_hint: {'center_x': 0.93, 'center_y': 0.8}  
+            TextInput:
+                id: initial_velocity
+                hint_text:"Enter value for Initial_Velocity (m/s)"
+                input_filter: "float"
+            TextInput:
+                id: acceleration
+                hint_text:"Enter value for Acceleration (m/s^2)"
+                input_filter: "float"
+            TextInput:
+                id: time
+                hint_text:"Enter value for Time (seconds)"
+                input_filter: "float"
+            RoundedButton:
+                text: "Answer"
+                on_press: root.get_suvat_velocity_answer(root.ids.initial_velocity.text,root.ids.acceleration.text,root.ids.time.text)
+            Label:
+                id: suvat_velocity_answer
+                text: ""
+            Label:
+                text: "m/s"  
+        RoundedButton:
+            text: "Back"
+            on_press: root.backwards1()
+            size_hint: 0.2, 0.2
+            pos_hint: {'center_x': 0.93, 'center_y': 0.8}
+            background_color: 1, 1, 1, 0
+            opacity: 1 if self.state == 'normal' else 0.5
+            color: 1, 1, 1, 1
+
+<SuvatVelocity2Screen>:
+    canvas.before:
+        Color:
+            rgba: 1, 1, 1, 0.4       
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: 'GUI_design/background.png'
+    GridLayout:
+        cols: 1
+        padding: 10
+        spacing: 10
+        GridLayout:
+            cols:1
+            padding: 10
+            spacing: 10
+            Label:
+                text:"Velocity Equation 2"
+                font_size:'20sp'
+            Image:
+                source: 'GUI_design/equation images/suvat2.png'
+                size_hint: 1, 1
+                pos_hint: {'center_x': 0.93, 'center_y': 0.8} 
+            TextInput:
+                id: initial_velocity
+                hint_text:"Enter value for Initial_Velocity (m/s)"
+                input_filter: "float"
+            TextInput:
+                id: acceleration
+                hint_text:"Enter value for Acceleration (m/s^2)"
+                input_filter: "float"
+            TextInput:
+                id: displacement
+                hint_text:"Enter value for Displacement (meters)"
+                input_filter: "float"
+            RoundedButton:
+                text: "Answer"
+                on_press: root.get_suvat_velocity_2_answer(root.ids.initial_velocity.text,root.ids.acceleration.text,root.ids.displacement.text)
+            Label:
+                id: suvat_velocity_2_answer
+                text: ""
+            Label:
+                text: "m/s"  
+        RoundedButton:
+            text: "Back"
+            on_press: root.backwards1()
+            size_hint: 0.2, 0.2
+            pos_hint: {'center_x': 0.93, 'center_y': 0.8}
+            background_color: 1, 1, 1, 0
+            opacity: 1 if self.state == 'normal' else 0.5
+            color: 1, 1, 1, 1
+
+<SuvatDisplacementScreen>:
+    canvas.before:
+        Color:
+            rgba: 1, 1, 1, 0.4       
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: 'GUI_design/background.png'
+    GridLayout:
+        cols: 1
+        padding: 10
+        spacing: 10
+        GridLayout:
+            cols:1
+            padding: 10
+            spacing: 10
+            Label:
+                text:"Displacement Equation"
+                font_size:'20sp'
+            Image:
+                source: 'GUI_design/equation images/suvat3.png'
+                size_hint: 1, 1
+                pos_hint: {'center_x': 0.93, 'center_y': 0.8} 
+            TextInput:
+                id: initial_velocity
+                hint_text:"Enter value for Initial_Velocity (m/s)"
+                input_filter: "float"
+            TextInput:
+                id: acceleration
+                hint_text:"Enter value for Acceleration (m/s^2)"
+                input_filter: "float"
+            TextInput:
+                id: time
+                hint_text:"Enter value for Time (seconds)"
+                input_filter: "float"
+            RoundedButton:
+                text: "Answer"
+                on_press: root.get_suvat_displacement_answer(root.ids.initial_velocity.text,root.ids.acceleration.text,root.ids.time.text)
+            Label:
+                id: suvat_displacement_answer
+                text: ""
+            Label:
+                text: "meters"  
+        RoundedButton:
+            text: "Back"
+            on_press: root.backwards1()
+            size_hint: 0.2, 0.2
+            pos_hint: {'center_x': 0.93, 'center_y': 0.8}
+            background_color: 1, 1, 1, 0
+            opacity: 1 if self.state == 'normal' else 0.5
+            color: 1, 1, 1, 1
+
+<SuvatDisplacement2Screen>:
+    canvas.before:
+        Color:
+            rgba: 1, 1, 1, 0.4       
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: 'GUI_design/background.png'
+    GridLayout:
+        cols: 1
+        padding: 10
+        spacing: 10
+        GridLayout:
+            cols:1
+            padding: 10
+            spacing: 10
+            Label:
+                text:"Suvat Displacement Equation"
+                font_size:'20sp'
+            Image:
+                source: 'GUI_design/equation images/suvat4.png'
+                size_hint: 1, 1
+                pos_hint: {'center_x': 0.93, 'center_y': 0.8} 
+            TextInput:
+                id: initial_velocity
+                hint_text:"Enter value for Initial_Velocity (m/s)"
+                input_filter: "float"
+            TextInput:
+                id: final_velocity
+                hint_text:"Enter value for Final_Velocity (m/s)"
+                input_filter: "float"
+            TextInput:
+                id: time
+                hint_text:"Enter value for Time (seconds)"
+                input_filter: "float"
+            RoundedButton:
+                text: "Answer"
+                on_press: root.get_suvat_displacement_2_answer(root.ids.initial_velocity.text,root.ids.final_velocity.text,root.ids.time.text)
+            Label:
+                id: suvat_displacement_2_answer
+                text: ""
+            Label:
+                text: "meters"
+        RoundedButton:
+            text: "Back"
+            on_press: root.backwards1()
+            size_hint: 0.2, 0.2
+            pos_hint: {'center_x': 0.93, 'center_y': 0.8}
+            background_color: 1, 1, 1, 0
+            opacity: 1 if self.state == 'normal' else 0.5
+            color: 1, 1, 1, 1
+
+
+<ForceScreen>:
+    canvas.before:
+        Color:
+            rgba: 1, 1, 1, 0.4       
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: 'GUI_design/background.png'
+    GridLayout:
+        cols: 1
+        padding: 10
+        spacing: 10
+        GridLayout:
+            cols:1
+            padding: 10
+            spacing: 10
+            Label:
+                text:"Force Equations"
+                font_size:'20sp'
+            Image:
+                source: 'GUI_design/equation images/force.png'
+                size_hint: 1, 1
+                pos_hint: {'center_x': 0.93, 'center_y': 0.8} 
+            TextInput:
+                id: mass
+                hint_text:"Enter value for Mass"
+                input_filter: "float"
+            TextInput:
+                id: acceleration
+                hint_text:"Enter value for Acceleration"
+                input_filter: "float"
+            RoundedButton:
+                text: "Answer"
+                on_press: root.get_force_answer(root.ids.acceleration.text,root.ids.mass.text)
+            Label:
+                id: force_answer
+                text: ""
+            Label:
+                text: "Newtons"
+        RoundedButton:
+            text: "Back"
+            on_press: root.backwards()
+            size_hint: 0.2, 0.2
+            pos_hint: {'center_x': 0.93, 'center_y': 0.8}
+            background_color: 1, 1, 1, 0
+            opacity: 1 if self.state == 'normal' else 0.5
+            color: 1, 1, 1, 1
+
+
+<WeightScreen>:
+    canvas.before:
+        Color:
+            rgba: 1, 1, 1, 0.4       
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: 'GUI_design/background.png'
+    GridLayout:
+        cols: 1
+        padding: 10
+        spacing: 10
+        GridLayout:
+            cols:1
+            padding: 10
+            spacing: 10
+            Label:
+                text:"Weight Equations"
+                font_size:'20sp'
+            Image:
+                source: 'GUI_design/equation images/weight.png'
+                size_hint: 1, 1
+                pos_hint: {'center_x': 0.93, 'center_y': 0.8}  
+            TextInput:
+                id: mass
+                hint_text:"Enter value for Mass"
+                input_filter: "float"
+            RoundedButton:
+                text: "Calculate"
+                on_press: root.get_weight_answer(root.ids.mass.text)
+            Label:
+                id: weight_answer
+                text: ""
+            Label:
+                text: "Newtons"
+        RoundedButton:
+            text: "Back"
+            on_press: root.backwards()
+            size_hint: 0.2, 0.2
+            pos_hint: {'center_x': 0.93, 'center_y': 0.8}
+            background_color: 1, 1, 1, 0
+            opacity: 1 if self.state == 'normal' else 0.5
+            color: 1, 1, 1, 1
+
+<WorkScreen>:
+    canvas.before:
+        Color:
+            rgba: 1, 1, 1, 0.4       
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: 'GUI_design/background.png'
+    GridLayout:
+        cols: 1
+        padding: 10
+        spacing: 10
+        GridLayout:
+            cols:1
+            padding: 10
+            spacing: 10
+            Label:
+                text:"Work Equations"
+                font_size:'20sp'
+            Image:
+                source: 'GUI_design/equation images/work done.png'
+                size_hint: 1, 1
+                pos_hint: {'center_x': 0.93, 'center_y': 0.8}
+            TextInput:
+                id: force
+                hint_text:"Enter value for Force (Newtons)"
+                input_filter: "float"
+            TextInput:
+                id: displacement
+                hint_text:"Enter value for Displacement (Meters)"
+                input_filter: "float"
+            RoundedButton:
+                text: "Answer"
+                on_press: root.get_work_answer(root.ids.displacement.text,root.ids.force.text)
+            Label:
+                id: work_answer
+                text: ""            
+            Label:
+                text: "Newtons"
+        RoundedButton:
+            text: "Back"
+            on_press: root.backwards()
+            size_hint: 0.2, 0.2
+            pos_hint: {'center_x': 0.93, 'center_y': 0.8}
+            background_color: 1, 1, 1, 0
+            opacity: 1 if self.state == 'normal' else 0.5
+            color: 1, 1, 1, 1
+
+
+<PowerScreen>:
+    canvas.before:
+        Color:
+            rgba: 1, 1, 1, 0.4       
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: 'GUI_design/background.png'
+    GridLayout:
+        cols: 1
+        padding: 10
+        spacing: 10
+        GridLayout:
+            cols:1
+            Label:
+                text:"Power Equations"
+                font_size:'20sp'  
+        GridLayout:
+            rows: 5
+            padding: 10
+            spacing: 10
+            RoundedButton:
+                text: "Energy to Power"
+                on_press: root.power1()
+            RoundedButton:
+                text: "Rotational Power"
+                on_press: root.power2()
+        RoundedButton:
+            text: "Back"
+            on_press: root.backwards()
+            size_hint: 0.2, 0.2
+            pos_hint: {'center_x': 0.93, 'center_y': 0.8}
+            background_color: 1, 1, 1, 0
+            opacity: 1 if self.state == 'normal' else 0.5
+            color: 1, 1, 1, 1
+
+
+
+<Power1Screen>:
+    canvas.before:
+        Color:
+            rgba: 1, 1, 1, 0.4       
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: 'GUI_design/background.png'
+    GridLayout:
+        cols: 1
+        padding: 10
+        spacing: 10
+        GridLayout:
+            cols:1
+            padding: 10
+            spacing: 10
+            Label:
+                text:"Energy to Power"
+                font_size:'20sp'
+            Image:
+                source: 'GUI_design/equation images/power 1.png'
+                size_hint: 1, 1
+                pos_hint: {'center_x': 0.93, 'center_y': 0.8} 
+            TextInput:
+                id: energy
+                hint_text:"Enter value for Energy (Joules)"
+                input_filter: "float"
+            TextInput:
+                id: time
+                hint_text:"Enter value for Time (Seconds)"
+                input_filter: "float"
+            RoundedButton:
+                text: "Answer"
+                on_press: root.get_power1_answer(root.ids.energy.text,root.ids.time.text)
+            Label:
+                id: power1_answer
+                text: ""
+            Label:
+                text: "J/s" 
+        RoundedButton:
+            text: "Back"
+            on_press: root.backwards2()
+            size_hint: 0.2, 0.2
+            pos_hint: {'center_x': 0.93, 'center_y': 0.8}
+            background_color: 1, 1, 1, 0
+            opacity: 1 if self.state == 'normal' else 0.5
+            color: 1, 1, 1, 1
+
+<Power2Screen>:
+    canvas.before:
+        Color:
+            rgba: 1, 1, 1, 0.4       
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: 'GUI_design/background.png'
+    GridLayout:
+        cols: 1
+        padding: 10
+        spacing: 10
+        GridLayout:
+            cols:1
+            padding: 10
+            spacing: 10
+            Label:
+                text:"Rotational Power"
+                font_size:'20sp'
+            Image:
+                source: 'GUI_design/equation images/power2.png'
+                size_hint: 1, 1
+                pos_hint: {'center_x': 0.93, 'center_y': 0.8} 
+            TextInput:
+                id: torque
+                hint_text:"Enter value for Torque (Nm)"
+                input_filter: "float"
+            TextInput:
+                id: rpm
+                hint_text:"Enter value for RPM"
+                input_filter: "float"
+            RoundedButton:
+                text: "Answer"
+                on_press: root.get_power2_answer(root.ids.torque.text,root.ids.rpm.text)
+            Label:
+                id: power2_answer
+                text: "" 
+            Label:
+                text: "Nm" 
+        RoundedButton:
+            text: "Back"
+            on_press: root.backwards2()
+            size_hint: 0.2, 0.2
+            pos_hint: {'center_x': 0.93, 'center_y': 0.8}
+            background_color: 1, 1, 1, 0
+            opacity: 1 if self.state == 'normal' else 0.5
+            color: 1, 1, 1, 1
+
+<EfficiencyScreen>:
+    canvas.before:
+        Color:
+            rgba: 1, 1, 1, 0.4       
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: 'GUI_design/background.png'
+    GridLayout:
+        cols: 1
+        padding: 10
+        spacing: 10
+        GridLayout:
+            cols:1
+            padding: 10
+            spacing: 10
+            Label:
+                text:"Efficiency Equations"
+                font_size:'20sp'
+            Image:
+                source: 'GUI_design/equation images/efficiency.png'
+                size_hint: 1, 1
+                pos_hint: {'center_x': 0.93, 'center_y': 0.8}  
+            TextInput:
+                id: output
+                hint_text:"Enter value for Output"
+                input_filter: "float"
+            TextInput:
+                id: input
+                hint_text:"Enter value for Input"
+                input_filter: "float"
+            RoundedButton:
+                text: "Answer"
+                on_press: root.get_efficiency_answer(root.ids.output.text,root.ids.input.text)
+            Label:
+                id: efficiency_answer
+                text: ""          
+        RoundedButton:
+            text: "Back"
+            on_press: root.backwards()
+            size_hint: 0.2, 0.2
+            pos_hint: {'center_x': 0.93, 'center_y': 0.8}
+            background_color: 1, 1, 1, 0
+            opacity: 1 if self.state == 'normal' else 0.5
+            color: 1, 1, 1, 1
+
+
+<EnergyScreen>:
+    canvas.before:
+        Color:
+            rgba: 1, 1, 1, 0.4       
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: 'GUI_design/background.png'
+    GridLayout:
+        cols: 1
+        padding: 10
+        spacing: 10
+        GridLayout:
+            cols:1
+            padding: 10
+            spacing: 10
+            Label:
+                text:"Energy Equations"
+                font_size:'20sp'  
+        GridLayout:
+            rows: 5
+            padding: 10
+            spacing: 10
+            RoundedButton:
+                text: "Potential Energy"
+                on_press: root.potential()
+            RoundedButton:
+                text: "Kinetic Energy"
+                on_press: root.kinetic()
+            RoundedButton:
+                text: "Thermal Energy"
+                on_press: root.thermal()
+        RoundedButton:
+            text: "Back"
+            on_press: root.backwards()
+            size_hint: 0.2, 0.2
+            pos_hint: {'center_x': 0.93, 'center_y': 0.8}
+            background_color: 1, 1, 1, 0
+            opacity: 1 if self.state == 'normal' else 0.5
+            color: 1, 1, 1, 1
+
+<PotentialScreen>:
+    canvas.before:
+        Color:
+            rgba: 1, 1, 1, 0.4       
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: 'GUI_design/background.png'
+    GridLayout:
+        cols: 1
+        padding: 10
+        spacing: 10
+        GridLayout:
+            cols:1
+            padding: 10
+            spacing: 10
+            Label:
+                text:"Potential Energy"
+                font_size:'20sp'
+            Image:
+                source: 'GUI_design/equation images/potential.png'
+                size_hint: 1, 1
+                pos_hint: {'center_x': 0.93, 'center_y': 0.8}  
+            TextInput:
+                id: mass
+                hint_text:"Enter value for Mass (kg)"
+                input_filter: "float"
+            TextInput:
+                id: height
+                hint_text:"Enter value for height (meters)"
+                input_filter: "float"
+            RoundedButton:
+                text: "Answer"
+                on_press: root.get_potential_answer(root.ids.mass.text,root.ids.height.text)
+            Label:
+                id: potential_answer
+                text: ""          
+            Label:
+                text: "Joules" 
+        RoundedButton:
+            text: "Back"
+            on_press: root.backwards3()
+            size_hint: 0.2, 0.2
+            pos_hint: {'center_x': 0.93, 'center_y': 0.8}
+            background_color: 1, 1, 1, 0
+            opacity: 1 if self.state == 'normal' else 0.5
+            color: 1, 1, 1, 1
+
+<KineticScreen>:
+    canvas.before:
+        Color:
+            rgba: 1, 1, 1, 0.4       
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: 'GUI_design/background.png'
+    GridLayout:
+        cols: 1
+        padding: 10
+        spacing: 10
+        GridLayout:
+            cols:1
+            padding: 10
+            spacing: 10
+            Label:
+                text:"Kinetic Energy"
+                font_size:'20sp'
+            Image:
+                source: 'GUI_design/equation images/kinetic.png'
+                size_hint: 1, 1
+                pos_hint: {'center_x': 0.93, 'center_y': 0.8}  
+            TextInput:
+                id: mass
+                hint_text:"Enter value for Mass (kg)"
+                input_filter: "float"
+            TextInput:
+                id: velocity
+                hint_text:"Enter value for Velocity (m/s)"
+                input_filter: "float"
+            RoundedButton:
+                text: "Answer"
+                on_press: root.get_kinetic_answer(root.ids.mass.text,root.ids.velocity.text)
+            Label:
+                id: kinetic_answer
+                text: ""          
+            Label:
+                text: "Joules" 
+        RoundedButton:
+            text: "Back"
+            on_press: root.backwards3()
+            size_hint: 0.2, 0.2
+            pos_hint: {'center_x': 0.93, 'center_y': 0.8}
+            background_color: 1, 1, 1, 0
+            opacity: 1 if self.state == 'normal' else 0.5
+            color: 1, 1, 1, 1
+
+
+<ThermalScreen>:
+    canvas.before:
+        Color:
+            rgba: 1, 1, 1, 0.4       
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: 'GUI_design/background.png'
+    GridLayout:
+        cols: 1
+        padding: 10
+        spacing: 10
+        GridLayout:
+            cols:1
+            padding: 10
+            spacing: 10
+            Label:
+                text:"Thermal Energy"
+                font_size:'20sp'
+            Image:
+                source: 'GUI_design/equation images/thermal.png'
+                size_hint: 2, 2
+                pos_hint: {'center_x': 0.93, 'center_y': 0.8}  
+            TextInput:
+                id: mass
+                hint_text:"Enter value for Mass (kg)"
+                input_filter: "float"
+            TextInput:
+                id: shc
+                hint_text:"Enter value for Specific Heat Capacity"
+                input_filter: "float"
+            TextInput:
+                id: t1
+                hint_text:"Enter value for Initial Temperature ('C)"
+                input_filter: "float"
+            TextInput:
+                id: t2
+                hint_text:"Enter value for Final Temperature ('C)"
+                input_filter: "float"
+            RoundedButton:
+                text: "Answer"
+                on_press: root.get_thermal_answer(root.ids.mass.text,root.ids.shc.text,root.ids.t1.text,root.ids.t2.text)
+            Label:
+                id: thermal_answer
+                text: ""
+            Label:
+                text: "Joules" 
+        RoundedButton:
+            text: "Back"
+            on_press: root.backwards3()
+            size_hint: 0.2, 0.2
+            pos_hint: {'center_x': 0.93, 'center_y': 0.8}
+            background_color: 1, 1, 1, 0
+            opacity: 1 if self.state == 'normal' else 0.5
+            color: 1, 1, 1, 1
+
+<FluidScreen>:
+    canvas.before:
+        Color:
+            rgba: 1, 1, 1, 0.4       
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: 'GUI_design/background.png'
+    GridLayout:
+        cols: 1
+        padding: 10
+        spacing: 10
+        GridLayout:
+            cols:1
+            padding: 10
+            spacing: 10
+            Label:
+                text:"Fluid Equations"
+                font_size:'20sp'  
+        GridLayout:
+            rows: 5
+            padding: 10
+            spacing: 10
+            RoundedButton:
+                text: "Absolute Pressure"
+                on_press: root.pressure()
+            RoundedButton:
+                text: "Charles Law"
+                on_press: root.charleslaw()
+            RoundedButton:
+                text: "Guy-Lussanc's Law"
+                on_press: root.gllaw()
+            RoundedButton:
+                text: "Boyle's Law"
+                on_press: root.boyleslaw()
+            RoundedButton:
+                text: "Flow Rate"
+                on_press: root.flowrate()
+            RoundedButton:
+                text: "Area vs Velocity"
+                on_press: root.areavsvelocity()
+            RoundedButton:
+                text: "Brake Horse Power"
+                on_press: root.horsepower()
+        RoundedButton:
+            text: "Back"
+            on_press: root.backwards()
+            size_hint: 0.2, 0.2
+            pos_hint: {'center_x': 0.93, 'center_y': 0.8}
+            background_color: 1, 1, 1, 0
+            opacity: 1 if self.state == 'normal' else 0.5
+            color: 1, 1, 1, 1
+
+<PressureScreen>:
+    canvas.before:
+        Color:
+            rgba: 1, 1, 1, 0.4       
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: 'GUI_design/background.png'
+    GridLayout:
+        cols: 1
+        padding: 10
+        spacing: 10
+        GridLayout:
+            cols:1
+            padding: 10
+            spacing: 10
+            Label:
+                text:"Absolute Pressure"
+                font_size:'20sp'
+            Image:
+                source: 'GUI_design/equation images/absolutepressure.png'
+                size_hint: 1, 1
+                pos_hint: {'center_x': 0.93, 'center_y': 0.8}  
+            TextInput:
+                id: force
+                hint_text:"Enter value for Force (N)"
+                input_filter: "float"
+            TextInput:
+                id: area
+                hint_text:"Enter value for Area (m^2)"
+                input_filter: "float"
+            RoundedButton:
+                text: "Answer"
+                on_press: root.get_pressure_answer(root.ids.force.text,root.ids.area.text)
+            Label:
+                id: pressure_answer
+                text: ""          
+            Label:
+                text: "Pascals" 
+        RoundedButton:
+            text: "Back"
+            on_press: root.backwards4()
+            size_hint: 0.2, 0.2
+            pos_hint: {'center_x': 0.93, 'center_y': 0.8}
+            background_color: 1, 1, 1, 0
+            opacity: 1 if self.state == 'normal' else 0.5
+            color: 1, 1, 1, 1
+
+<CharlesLawScreen>:
+    canvas.before:
+        Color:
+            rgba: 1, 1, 1, 0.4       
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: 'GUI_design/background.png'
+    GridLayout:
+        cols: 1
+        padding: 10
+        spacing: 10
+        GridLayout:
+            cols:1
+            padding: 10
+            spacing: 10
+            Label:
+                text:"Charle's Law"
+                font_size:'20sp'
+            Image:
+                source: 'GUI_design/equation images/charleslaw.png'
+                size_hint: 1, 1
+                pos_hint: {'center_x': 0.93, 'center_y': 0.8}  
+            TextInput:
+                id: initial_temperature
+                hint_text:"Enter value for Initial Temperature ('C')"
+                input_filter: "float"
+            TextInput:
+                id: final_temperature
+                hint_text:"Enter value for Final Temperature ('C')"
+                input_filter: "float"
+            TextInput:
+                id: final_velocity
+                hint_text:"Enter value for Final Flow Velocity (m^3/s)"
+                input_filter: "float"                
+            RoundedButton:
+                text: "Answer"
+                on_press: root.get_charleslaw_answer(root.ids.initial_temperature.text,root.ids.final_temperature.text,root.ids.final_velocity.text)
+            Label:
+                id: charleslaw_answer
+                text: ""    
+            Label:
+                text: "m^3/s" 
+        RoundedButton:
+            text: "Back"
+            on_press: root.backwards4()
+            size_hint: 0.2, 0.2
+            pos_hint: {'center_x': 0.93, 'center_y': 0.8}
+            background_color: 1, 1, 1, 0
+            opacity: 1 if self.state == 'normal' else 0.5
+            color: 1, 1, 1, 1
+
+<GLLawScreen>:
+    canvas.before:
+        Color:
+            rgba: 1, 1, 1, 0.4       
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: 'GUI_design/background.png'
+    GridLayout:
+        cols: 1
+        padding: 10
+        spacing: 10
+        GridLayout:
+            cols:1
+            padding: 10
+            spacing: 10
+            Label:
+                text:"Guy-Lussanc's Law"
+                font_size:'20sp'
+            Image:
+                source: 'GUI_design/equation images/guylussancslaw.png'
+                size_hint: 1, 1
+                pos_hint: {'center_x': 0.93, 'center_y': 0.8}  
+            TextInput:
+                id: initial_temperature
+                hint_text:"Enter value for Initial Temperature ('C')"
+                input_filter: "float"
+            TextInput:
+                id: final_temperature
+                hint_text:"Enter value for Final Temperature ('C')"
+                input_filter: "float"
+            TextInput:
+                id: final_pressure
+                hint_text:"Enter value for Final Pressure (Pa or N/m^2)"
+                input_filter: "float"                
+            RoundedButton:
+                text: "Answer"
+                on_press: root.get_gllaw_answer(root.ids.initial_temperature.text,root.ids.final_temperature.text,root.ids.final_pressure.text)
+            Label:
+                id: gllaw_answer
+                text: ""    
+            Label:
+                text: "Pascals" 
+        RoundedButton:
+            text: "Back"
+            on_press: root.backwards4()
+            size_hint: 0.2, 0.2
+            pos_hint: {'center_x': 0.93, 'center_y': 0.8}
+            background_color: 1, 1, 1, 0
+            opacity: 1 if self.state == 'normal' else 0.5
+            color: 1, 1, 1, 1
+
+
+<BoylesLawScreen>:
+    canvas.before:
+        Color:
+            rgba: 1, 1, 1, 0.4       
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: 'GUI_design/background.png'
+    GridLayout:
+        cols: 1
+        padding: 10
+        spacing: 10
+        GridLayout:
+            cols:1
+            padding: 10
+            spacing: 10
+            Label:
+                text:"Boyle's Law"
+                font_size:'20sp'
+            Image:
+                source: 'GUI_design/equation images/boylslaw.png'
+                size_hint: 1, 1
+                pos_hint: {'center_x': 0.93, 'center_y': 0.8}  
+            TextInput:
+                id: initial_velocity
+                hint_text:"Enter value for Initial Flow Velocity (m^3/s)"
+                input_filter: "float"
+            TextInput:
+                id: final_velocity
+                hint_text:"Enter value for Final Flow Velocity (m^3/s)"
+                input_filter: "float"
+            TextInput:
+                id: final_pressure
+                hint_text:"Enter value for Final Pressure (Pa or N/m^2)"
+                input_filter: "float"                
+            RoundedButton:
+                text: "Answer"
+                on_press: root.get_boyleslaw_answer(root.ids.initial_velocity.text,root.ids.final_velocity.text,root.ids.final_pressure.text)
+            Label:
+                id: boyleslaw_answer
+                text: ""    
+            Label:
+                text: "Pascals" 
+        RoundedButton:
+            text: "Back"
+            on_press: root.backwards4()
+            size_hint: 0.2, 0.2
+            pos_hint: {'center_x': 0.93, 'center_y': 0.8}
+            background_color: 1, 1, 1, 0
+            opacity: 1 if self.state == 'normal' else 0.5
+            color: 1, 1, 1, 1
+
+<FlowRateScreen>:
+    canvas.before:
+        Color:
+            rgba: 1, 1, 1, 0.4       
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: 'GUI_design/background.png'
+    GridLayout:
+        cols: 1
+        padding: 10
+        spacing: 10
+        GridLayout:
+            cols:1
+            padding: 10
+            spacing: 10
+            Label:
+                text:"Flow Rate"
+                font_size:'20sp'
+            Image:
+                source: 'GUI_design/equation images/flowrate.png'
+                size_hint: 1, 1
+                pos_hint: {'center_x': 0.93, 'center_y': 0.8} 
+            TextInput:
+                id: area
+                hint_text:"Enter value for Area (m^2)"
+                input_filter: "float"
+            TextInput:
+                id: velocity
+                hint_text:"Enter value for Velocity (m/s)"
+                input_filter: "float"
+            RoundedButton:
+                text: "Calculate"
+                on_press: root.get_flowrate_answer(root.ids.velocity.text,root.ids.area.text)
+            Label:
+                id: flowrate_answer
+                text: ""          
+            Label:
+                text: "m^3/s" 
+        RoundedButton:
+            text: "Back"
+            on_press: root.backwards4()
+            size_hint: 0.2, 0.2
+            pos_hint: {'center_x': 0.93, 'center_y': 0.8}
+            background_color: 1, 1, 1, 0
+            opacity: 1 if self.state == 'normal' else 0.5
+            color: 1, 1, 1, 1
+
+
+<AreavsVelocityScreen>:
+    canvas.before:
+        Color:
+            rgba: 1, 1, 1, 0.4       
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: 'GUI_design/background.png'
+    GridLayout:
+        cols: 1
+        padding: 10
+        spacing: 10
+        GridLayout:
+            cols:1
+            padding: 10
+            spacing: 10
+            Label:
+                text:"Area vs Velocity"
+                font_size:'20sp'
+            Image:
+                source: 'GUI_design/equation images/areavsvelocity.png'
+                size_hint: 1, 1
+                pos_hint: {'center_x': 0.93, 'center_y': 0.8} 
+            TextInput:
+                id: initial_velocity
+                hint_text:"Enter value for Initial Flow Velocity (m^3/s)"
+                input_filter: "float"
+            TextInput:
+                id: final_velocity
+                hint_text:"Enter value for Final Flow Velocity (m^3/s)"
+                input_filter: "float"
+            TextInput:
+                id: final_area
+                hint_text:"Enter value for Final Area (m^2)"
+                input_filter: "float"                
+            RoundedButton:
+                text: "Answer"
+                on_press: root.get_areavsvelocity_answer(root.ids.initial_velocity.text,root.ids.final_velocity.text,root.ids.final_area.text)
+            Label:
+                id: areavsvelocity_answer
+                text: "" 
+            Label:
+                text: "m^2" 
+        RoundedButton:
+            text: "Back"
+            on_press: root.backwards4()
+            size_hint: 0.2, 0.2
+            pos_hint: {'center_x': 0.93, 'center_y': 0.8}
+            background_color: 1, 1, 1, 0
+            opacity: 1 if self.state == 'normal' else 0.5
+            color: 1, 1, 1, 1
+
+<HorsePowerScreen>:
+    canvas.before:
+        Color:
+            rgba: 1, 1, 1, 0.4       
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: 'GUI_design/background.png'
+    GridLayout:
+        cols: 1
+        padding: 10
+        spacing: 10
+        GridLayout:
+            cols:1
+            padding: 10
+            spacing: 10
+            Label:
+                text:"Brake Horse Power"
+                font_size:'20sp'
+            Image:
+                source: 'GUI_design/equation images/horsepower.png'
+                size_hint: 1, 1
+                pos_hint: {'center_x': 0.93, 'center_y': 0.8} 
+            TextInput:
+                id: flowrate
+                hint_text:"Enter value for Flow Rate (m^3/s)"
+                input_filter: "float"
+            TextInput:
+                id: pressure
+                hint_text:"Enter value for Pressure (Pa or N/m^2)"
+                input_filter: "float"
+            TextInput:
+                id: efficiency
+                hint_text:"Enter value for Efficiency of Pump"
+                input_filter: "float"                
+            RoundedButton:
+                text: "Calculate"
+                on_press: root.get_horsepower_answer(root.ids.flowrate.text,root.ids.pressure.text,root.ids.efficiency.text)
+            Label:
+                id: horsepower_answer
+                text: ""          
+            Label:
+                text: "bhp" 
+        RoundedButton:
+            text: "Back"
+            on_press: root.backwards4()
+            size_hint: 0.2, 0.2
+            pos_hint: {'center_x': 0.93, 'center_y': 0.8}
+            background_color: 1, 1, 1, 0
+            opacity: 1 if self.state == 'normal' else 0.5
+            color: 1, 1, 1, 1
+
+
+<ElectricityScreen>:
+    canvas.before:
+        Color:
+            rgba: 1, 1, 1, 0.4       
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: 'GUI_design/background.png'
+    GridLayout:
+        cols: 1
+        padding: 10
+        spacing: 10
+        GridLayout:
+            cols:1
+            Label:
+                text:"Electricity Equations"
+                font_size:'20sp'  
+        GridLayout:
+            rows: 3
+            padding: 10
+            spacing: 10
+            RoundedButton:
+                text: "Voltage"
+                on_press: root.voltage()
+            RoundedButton:
+                text: "Electric Power"
+                on_press: root.electric_power()
+        RoundedButton:
+            text: "Back"
+            on_press: root.backwards()
+            size_hint: 0.2, 0.2
+            pos_hint: {'center_x': 0.93, 'center_y': 0.8}
+            background_color: 1, 1, 1, 0
+            opacity: 1 if self.state == 'normal' else 0.5
+            color: 1, 1, 1, 1
+
+<VoltageScreen>:
+    canvas.before:
+        Color:
+            rgba: 1, 1, 1, 0.4       
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: 'GUI_design/background.png'
+    GridLayout:
+        cols: 1
+        padding: 10
+        spacing: 10
+        GridLayout:
+            cols:1
+            Label:
+                text:"Voltage"
+                font_size:'20sp'
+            Image:
+                source: 'GUI_design/equation images/voltage.png'
+                size_hint: 1, 1
+                pos_hint: {'center_x': 0.93, 'center_y': 0.8} 
+            TextInput:
+                id: current
+                hint_text:"Enter value for Current (Amps)"
+                input_filter: "float"
+            TextInput:
+                id: resistance
+                hint_text:"Enter value for Resistance (Ohms)"
+                input_filter: "float"
+            RoundedButton:
+                text: "Calculate"
+                on_press: root.get_voltage_answer(root.ids.current.text,root.ids.resistance.text)
+            Label:
+                id: voltage_answer
+                text: ""          
+            Label:
+                text: "Volts" 
+        RoundedButton:
+            text: "Back"
+            on_press: root.backwards5()
+            size_hint: 0.2, 0.2
+            pos_hint: {'center_x': 0.93, 'center_y': 0.8}
+            background_color: 1, 1, 1, 0
+            opacity: 1 if self.state == 'normal' else 0.5
+            color: 1, 1, 1, 1
+
+
+<ElectricPowerScreen>:
+    canvas.before:
+        Color:
+            rgba: 1, 1, 1, 0.4       
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: 'GUI_design/background.png'
+    GridLayout:
+        cols: 1
+        padding: 10
+        spacing: 10
+        GridLayout:
+            cols:1
+            Label:
+                text:"Electric Power"
+                font_size:'20sp'
+            Image:
+                source: 'GUI_design/equation images/electricpower.png'
+                size_hint: 1, 1
+                pos_hint: {'center_x': 0.93, 'center_y': 0.8}  
+            TextInput:
+                id: current
+                hint_text:"Enter value for Current (Amps)"
+                input_filter: "float"
+            TextInput:
+                id: voltage
+                hint_text:"Enter value for Voltage (Volts)"
+                input_filter: "float"
+            RoundedButton:
+                text: "Calculate"
+                on_press: root.get_electric_power_answer(root.ids.current.text,root.ids.voltage.text)
+            Label:
+                id: electric_power_answer
+                text: ""  
+            Label:
+                text: "Watts" 
+        RoundedButton:
+            text: "Back"
+            on_press: root.backwards5()
+            size_hint: 0.2, 0.2
+            pos_hint: {'center_x': 0.93, 'center_y': 0.8}
+            background_color: 1, 1, 1, 0
+            opacity: 1 if self.state == 'normal' else 0.5
+            color: 1, 1, 1, 1
+
+<RoundedButton@Button>
+    background_color: (0,0,0,0)
+    background_normal: ''
+    canvas.before:
+        Color:
+            rgba: (48/255,84/255,150/255,1)
+        RoundedRectangle: 
+            size: self.size
+            pos: self.pos
+            radius: [45]
+
+
+
+<RootWidget>:
+    MainScreen:
+        name: "main_screen"
+    MechanicalScreen:
+        name: "mechanical_screen"
+    SpeedScreen:
+        name: "speed_screen"
+    AccelerationScreen:
+        name: "acceleration_screen"
+    SuvatVelocityScreen:
+        name: "suvat_velocity_screen"
+    SuvatVelocity2Screen:
+        name: "suvat_velocity_2_screen"
+    SuvatDisplacementScreen:
+        name: "suvat_displacement_screen"
+    SuvatDisplacement2Screen:
+        name: "suvat_displacement_2_screen"
+    ForceScreen:
+        name: "force_screen"
+    WeightScreen:
+        name: "weight_screen"
+    WorkScreen:
+        name: "work_screen"
+    PowerScreen:
+        name: "power_screen"
+    Power1Screen:
+        name: "power1_screen"
+    Power2Screen:
+        name: "power2_screen"
+    EfficiencyScreen:
+        name: "efficiency_screen"
+    EnergyScreen:
+        name: "energy_screen"
+    PotentialScreen:
+        name: "potential_screen"
+    KineticScreen:
+        name: "kinetic_screen"
+    ThermalScreen:
+        name: "thermal_screen"
+    FluidScreen:
+        name: "fluid_screen"
+    PressureScreen:
+        name: "pressure_screen"
+    CharlesLawScreen:
+        name: "charleslaw_screen"
+    GLLawScreen:
+        name: "gllaw_screen"
+    BoylesLawScreen:
+        name: "boyleslaw_screen"
+    FlowRateScreen:
+        name: "flowrate_screen"
+    AreavsVelocityScreen:
+        name: "areavsvelocity_screen"
+    HorsePowerScreen:
+        name: "horsepower_screen"
+    ElectricityScreen:
+        name: "electricity_screen"
+    VoltageScreen:
+        name: "voltage_screen"
+    ElectricPowerScreen:
+        name: "electric_power_screen"        
